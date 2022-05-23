@@ -1,0 +1,540 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Vite + Vue3 + TypeScript + Pinia + WindiCSS 项目搭建的过程 | Zon.Zhou</title><meta name="keywords" content="Vue3"><meta name="author" content="Zon."><meta name="copyright" content="Zon."><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="项目搭建的过程项目初始化 创建  1yarn create vite         安装依赖  12cd my-vite-demoyarn         运行  1yarn dev        构建生产环境和预览环境 修改配置文件vite.config.ts 根据模式对环境做相关配置    12345export default defineConfig((&amp;#123; mode &amp;#125">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vite + Vue3 + TypeScript + Pinia + WindiCSS 项目搭建的过程">
+<meta property="og:url" content="https://zon-blogs.github.io/2022/05/23/Vite-Vue3-TypeScript-Pinia-WindiCSS-%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA%E7%9A%84%E8%BF%87%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Zon.Zhou">
+<meta property="og:description" content="项目搭建的过程项目初始化 创建  1yarn create vite         安装依赖  12cd my-vite-demoyarn         运行  1yarn dev        构建生产环境和预览环境 修改配置文件vite.config.ts 根据模式对环境做相关配置    12345export default defineConfig((&amp;#123; mode &amp;#125">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://v3.cn.vuejs.org/logo.png">
+<meta property="article:published_time" content="2022-05-23T01:48:05.000Z">
+<meta property="article:modified_time" content="2022-05-23T02:15:32.302Z">
+<meta property="article:author" content="Zon.">
+<meta property="article:tag" content="Vue3">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://v3.cn.vuejs.org/logo.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://zon-blogs.github.io/2022/05/23/Vite-Vue3-TypeScript-Pinia-WindiCSS-%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA%E7%9A%84%E8%BF%87%E7%A8%8B/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Vite + Vue3 + TypeScript + Pinia + WindiCSS 项目搭建的过程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-05-23 10:15:32'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.1.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://v3.cn.vuejs.org/logo.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Zon.Zhou</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Vite + Vue3 + TypeScript + Pinia + WindiCSS 项目搭建的过程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-05-23T01:48:05.000Z" title="发表于 2022-05-23 09:48:05">2022-05-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-05-23T02:15:32.302Z" title="更新于 2022-05-23 10:15:32">2022-05-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Vue3/">Vue3</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Vite + Vue3 + TypeScript + Pinia + WindiCSS 项目搭建的过程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="项目搭建的过程"><a href="#项目搭建的过程" class="headerlink" title="项目搭建的过程"></a>项目搭建的过程</h2><h3 id="项目初始化"><a href="#项目初始化" class="headerlink" title="项目初始化"></a>项目初始化</h3><ul>
+<li>创建</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn create vite</span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<img src="57f180f1db7601e1935267fb81dfedbc.png" alt="截图" style="zoom:50%;" />
+
+<br/>
+
+<ul>
+<li>安装依赖</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> my-vite-demo</span><br><span class="line">yarn</span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<img src="527d530fbfd32e44f8bd75467c447ca3.png" alt="截图" style="zoom:50%;" />
+
+<br/>
+
+<ul>
+<li>运行</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn dev</span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<img src="83134bd39f9a4fb72b35b7750d270be6.png" alt="截图" style="zoom:50%;" />
+
+<br/>
+
+<h3 id="构建生产环境和预览环境"><a href="#构建生产环境和预览环境" class="headerlink" title="构建生产环境和预览环境"></a>构建生产环境和预览环境</h3><ul>
+<li>修改配置文件vite.config.ts<blockquote>
+<p>根据模式对环境做相关配置</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(<span class="function">(<span class="params">&#123; mode &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">plugins</span>: [<span class="title function_">vue</span>()],</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<ul>
+<li>新增环境文件.env<blockquote>
+<p>一份用于指定模式的文件（例如 .env.production）会比通用形式的优先级更高（例如 .env）</p>
+<p>已经存在的环境变量有最高的优先级，不会被 .env 类文件覆盖</p>
+<p>.env 类文件会在 Vite 启动一开始时被加载，而改动会在重启服务器后生效</p>
+</blockquote>
+</li>
+</ul>
+<br/>
+
+<img src="01e525591f5fb4f8061a4c078422b43d.png" alt="截图" style="zoom:50%;" />
+
+<br/>
+
+<ul>
+<li>添加Typescript提示<blockquote>
+<p>src目录下的 env.d.ts 文件</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// &lt;reference types=&quot;vite/client&quot; /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">ImportMetaEnv</span> &#123;</span><br><span class="line">  <span class="keyword">readonly</span> <span class="attr">VITE_APP_TITLE</span>: <span class="built_in">string</span></span><br><span class="line">  <span class="comment">// 更多环境变量...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">ImportMeta</span> &#123;</span><br><span class="line">  <span class="keyword">readonly</span> <span class="attr">env</span>: <span class="title class_">ImportMetaEnv</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<ul>
+<li>环境变量配置<blockquote>
+<p>配置端口、mock服务开关、基础路径等等</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">// .<span class="built_in">env</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># port</span></span><br><span class="line">VITE_PORT = 3000</span><br><span class="line"></span><br><span class="line">VITE_USE_MOCK = <span class="literal">true</span></span><br><span class="line">VITE_MOCK_URL = http://127.0.0.1:8888/mock/8888</span><br><span class="line"><span class="comment">#---------------------------------------------------------</span></span><br><span class="line">//.env.development</span><br><span class="line">NODE_ENV=development</span><br><span class="line"></span><br><span class="line">VITE_PUBLIC_PATH = /</span><br><span class="line">VITE_BASE_URL = http://192.168.1.123:2323/demo/api</span><br><span class="line"><span class="comment">#---------------------------------------------------------</span></span><br><span class="line">// .env.production</span><br><span class="line">NODE_ENV=production</span><br><span class="line">VITE_OUTPUT_DIR = dist</span><br><span class="line"></span><br><span class="line">VITE_DROP_CONSOLE = <span class="literal">true</span> //删除console</span><br><span class="line">VITE_DROP_DEBBUGER = <span class="literal">true</span> //删除debug</span><br><span class="line"></span><br><span class="line">VITE_PUBLIC_PATH = /</span><br><span class="line">VITE_BASE_URL = /demo/api</span><br><span class="line"><span class="comment">#---------------------------------------------------------</span></span><br><span class="line">// .env.preview</span><br><span class="line">NODE_ENV=preview</span><br><span class="line">VITE_OUTPUT_DIR = preview</span><br><span class="line"></span><br><span class="line">VITE_DROP_CONSOLE = <span class="literal">false</span></span><br><span class="line">VITE_DROP_DEBBUGER = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">VITE_PUBLIC_PATH = /</span><br><span class="line">VITE_BASE_URL = http://192.168.1.123:2323/demo/api</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<ul>
+<li>vite配置<blockquote>
+<p>安装 <code>yarn add  @types/node -D</code></p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineConfig, loadEnv &#125; <span class="keyword">from</span> <span class="string">&#x27;vite&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> vue <span class="keyword">from</span> <span class="string">&#x27;@vitejs/plugin-vue&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; resolve &#125; <span class="keyword">from</span> <span class="string">&#x27;path&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// https://vitejs.dev/config/</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(<span class="function">(<span class="params">&#123; mode &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> root = process.<span class="title function_">cwd</span>();<span class="comment">//获取环境根路径</span></span><br><span class="line">  <span class="comment">// 根据当前工作目录中的 `mode` 加载 .env 文件</span></span><br><span class="line">  <span class="comment">// 设置第三个参数为 &#x27;&#x27; 来加载所有环境变量，而不管是否有 `VITE_` 前缀。</span></span><br><span class="line">  <span class="keyword">const</span> env = <span class="title function_">loadEnv</span>(mode, root);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="attr">dropConsole</span>: <span class="built_in">boolean</span> = env.<span class="property">VITE_DROP_CONSOLE</span> !== <span class="string">&#x27;false&#x27;</span>; <span class="comment">//删除console</span></span><br><span class="line">  <span class="keyword">const</span> <span class="attr">dropDebugger</span>: <span class="built_in">boolean</span> = env.<span class="property">VITE_DROP_DEBBUGER</span> !== <span class="string">&#x27;false&#x27;</span>;<span class="comment">//删除debug</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">base</span>: env.<span class="property">VITE_PUBLIC_PATH</span>, <span class="comment">//基础路径</span></span><br><span class="line">    <span class="attr">resolve</span>: &#123;</span><br><span class="line">      <span class="attr">alias</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">find</span>: <span class="string">&#x27;@/&#x27;</span>, <span class="comment">//配置别名</span></span><br><span class="line">          <span class="attr">replacement</span>: <span class="string">`<span class="subst">$&#123;resolve(root, <span class="string">&#x27;./src&#x27;</span>)&#125;</span>/`</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">server</span>: &#123; <span class="comment">//dev</span></span><br><span class="line">      <span class="attr">host</span>: <span class="literal">true</span>, <span class="comment">//配置host</span></span><br><span class="line">      <span class="attr">port</span>: <span class="title class_">Number</span>(env.<span class="property">VITE_PORT</span>), <span class="comment">//配置端口</span></span><br><span class="line">      <span class="attr">open</span>: <span class="literal">true</span> <span class="comment">//运行时打开</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">build</span>: &#123; <span class="comment">//生产环境</span></span><br><span class="line">      <span class="attr">target</span>: <span class="string">&#x27;es2015&#x27;</span>,</span><br><span class="line">      <span class="attr">outDir</span>: env.<span class="property">VITE_OUTPUT_DIR</span>, <span class="comment">//输出路径</span></span><br><span class="line">      <span class="attr">minify</span>: <span class="string">&#x27;terser&#x27;</span>,</span><br><span class="line">      <span class="attr">terserOptions</span>: &#123;</span><br><span class="line">        <span class="attr">compress</span>: &#123;</span><br><span class="line">          <span class="attr">keep_infinity</span>: <span class="literal">true</span>,</span><br><span class="line">          <span class="attr">drop_console</span>: dropConsole, <span class="comment">//删除console</span></span><br><span class="line">          <span class="attr">drop_debugger</span>: dropDebugger <span class="comment">//删除debugger</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">chunkSizeWarningLimit</span>: <span class="number">2000</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">preview</span>: &#123; <span class="comment">//本地预览环境</span></span><br><span class="line">      <span class="attr">host</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">open</span>: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">plugins</span>: [</span><br><span class="line">      <span class="title function_">vue</span>(),</span><br><span class="line">    ]</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<ul>
+<li>配置脚本<blockquote>
+<p>制定相应环境模式 –mode</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json</span></span><br><span class="line"></span><br><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;dev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vite&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;build&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vue-tsc --noEmit &amp;&amp; vite build&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;preview&quot;</span><span class="punctuation">:</span> <span class="string">&quot;npm run build &amp;&amp; vite build --mode preview &amp;&amp; vite preview --mode preview&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<ul>
+<li>配置ts</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;target&quot;</span>: <span class="string">&quot;esnext&quot;</span>,</span><br><span class="line">    <span class="string">&quot;useDefineForClassFields&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">&quot;module&quot;</span>: <span class="string">&quot;esnext&quot;</span>,</span><br><span class="line">    <span class="string">&quot;moduleResolution&quot;</span>: <span class="string">&quot;node&quot;</span>,</span><br><span class="line">    <span class="string">&quot;strict&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">&quot;jsx&quot;</span>: <span class="string">&quot;preserve&quot;</span>,</span><br><span class="line">    <span class="string">&quot;sourceMap&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">&quot;resolveJsonModule&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">&quot;isolatedModules&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">&quot;esModuleInterop&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">&quot;lib&quot;</span>: [<span class="string">&quot;esnext&quot;</span>, <span class="string">&quot;dom&quot;</span>],</span><br><span class="line">    <span class="string">&quot;skipLibCheck&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">&quot;baseUrl&quot;</span>: <span class="string">&quot;./&quot;</span>,</span><br><span class="line">    <span class="string">&quot;paths&quot;</span>: &#123;</span><br><span class="line">      <span class="string">&quot;@/*&quot;</span>: [<span class="string">&quot;src/*&quot;</span>] <span class="comment">// 别名路径</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;types&quot;</span>: [<span class="string">&quot;vite/client&quot;</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;include&quot;</span>: [</span><br><span class="line">    <span class="string">&quot;src/**/*.ts&quot;</span>,</span><br><span class="line">    <span class="string">&quot;src/**/*.d.ts&quot;</span>,</span><br><span class="line">    <span class="string">&quot;src/**/*.tsx&quot;</span>,</span><br><span class="line">    <span class="string">&quot;src/**/*.vue&quot;</span>,</span><br><span class="line">  ],</span><br><span class="line">  <span class="string">&quot;exclude&quot;</span>: [<span class="string">&quot;node_modules&quot;</span>, <span class="string">&quot;dist&quot;</span>, <span class="string">&quot;preview&quot;</span>],</span><br><span class="line">  <span class="string">&quot;references&quot;</span>: [&#123; <span class="string">&quot;path&quot;</span>: <span class="string">&quot;./tsconfig.node.json&quot;</span> &#125;]</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<h3 id="添加自动导入Vue-Api"><a href="#添加自动导入Vue-Api" class="headerlink" title="添加自动导入Vue Api"></a>添加自动导入Vue Api</h3><ul>
+<li>安装</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm i unplugin-auto-import unplugin-vue-components -D</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">yarn add unplugin-auto-import unplugin-vue-components -D</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vite.config.ts</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">AutoImport</span> <span class="keyword">from</span> <span class="string">&#x27;unplugin-auto-import/vite&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Components</span> <span class="keyword">from</span> <span class="string">&#x27;unplugin-vue-components/vite&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">      <span class="title function_">vue</span>(),</span><br><span class="line">      <span class="title class_">AutoImport</span>(&#123;</span><br><span class="line">        <span class="attr">imports</span>: [<span class="string">&#x27;vue&#x27;</span>]</span><br><span class="line">        <span class="comment">// dts: &#x27;src/auto-imports.d.ts&#x27;</span></span><br><span class="line">      &#125;),</span><br><span class="line">      <span class="title class_">Components</span>(&#123;</span><br><span class="line">        </span><br><span class="line">      &#125;),</span><br><span class="line">  ],</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .eslintrc.js</span></span><br><span class="line"></span><br><span class="line"><span class="attr">rules</span>: &#123;</span><br><span class="line">  <span class="string">&#x27;no-undef&#x27;</span>: <span class="string">&#x27;off&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>element-ui plus 自动导入参考官方文档</p>
+</blockquote>
+<p>来源：<a target="_blank" rel="noopener" href="https://github.com/antfu/unplugin-vue-components#readme">unplugin-vue-components</a></p>
+<br/>
+
+<h2 id="接入现代CSS工程化"><a href="#接入现代CSS工程化" class="headerlink" title="接入现代CSS工程化"></a>接入现代CSS工程化</h2><h3 id="集成sass"><a href="#集成sass" class="headerlink" title="集成sass"></a>集成sass</h3><ul>
+<li>安装css预处理器</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add sass -D</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>新建css文件</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// <span class="attribute">src</span>/assets/style/<span class="selector-tag">main</span><span class="selector-class">.scss</span></span><br><span class="line"></span><br><span class="line">$test-<span class="attribute">color</span>: blue;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vite.config.ts</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(<span class="function">(<span class="params">&#123; mode &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">css</span>: &#123;</span><br><span class="line">      <span class="attr">preprocessorOptions</span>: &#123;</span><br><span class="line">        <span class="attr">scss</span>: &#123;</span><br><span class="line">          <span class="attr">additionalData</span>: <span class="string">&#x27;@import &quot;@/assets/style/main.scss&quot;;&#x27;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">plugins</span>: [<span class="title function_">vue</span>()],</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">color</span>: $test-color</span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<h3 id="集成-WindiCSS"><a href="#集成-WindiCSS" class="headerlink" title="集成 WindiCSS"></a>集成 WindiCSS</h3><ul>
+<li>安装</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add windicss vite-plugin-windicss -D</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// vite.config.ts</span><br><span class="line">import windi from &quot;vite-plugin-windicss&quot;;</span><br><span class="line"></span><br><span class="line">export default defineConfig((&#123; mode &#125;) =&gt; &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    plugins: [vue(), windi()],</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>引入css<blockquote>
+<p>配置添加相关配置文件，查阅windicss官方文档</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.ts</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;virtual:windi.css&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;virtual:windi-devtools&#x27;</span>; <span class="comment">//开发时浏览器工具</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">class=&quot;bg-red-200 p-2 border-10 border-yellow-500 text-blue-600 hover:bg-purple-400&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<h2 id="约束代码风格"><a href="#约束代码风格" class="headerlink" title="约束代码风格"></a>约束代码风格</h2><h3 id="Eslint"><a href="#Eslint" class="headerlink" title="Eslint"></a>Eslint</h3><ul>
+<li>安装</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add eslint -D</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>初始化</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn eslint --init</span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<img src="1e878693554546a57745d2d3b3bc2fa9.png" alt="截图" style="zoom:50%;" />
+
+<br/>
+
+<p>选中相应的配置进行安装</p>
+<blockquote>
+<p>eslint-plugin-vue</p>
+</blockquote>
+<p>规范等级：</p>
+<blockquote>
+<p>base 基础<br>essential 预设<br>strongly-recommended 推荐<br>recommended 最严谨</p>
+</blockquote>
+<p>vue3：</p>
+<blockquote>
+<p>Vue 3.x 需要加上 vue3 前綴，’plugin:vue&#x2F;vue3-essential’</p>
+</blockquote>
+<p>Airbnb：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/libertyAlone/airbnb-javascript-style-guide-cn">Airbnb JavaScript编码规范指南(ES6)中文版</a></p>
+</blockquote>
+<br/>
+
+<ul>
+<li>配置<blockquote>
+<p>安装完后自动生成 .eslintrc.js</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">env</span>: &#123;</span><br><span class="line">    <span class="attr">browser</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">es2021</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">node</span>: <span class="literal">true</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">extends</span>: [</span><br><span class="line">    <span class="string">&#x27;plugin:vue/essential&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;airbnb-base&#x27;</span>,</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">parserOptions</span>: &#123;</span><br><span class="line">    <span class="attr">ecmaVersion</span>: <span class="string">&#x27;latest&#x27;</span>,</span><br><span class="line">    <span class="attr">parser</span>: <span class="string">&#x27;@typescript-eslint/parser&#x27;</span>,</span><br><span class="line">    <span class="attr">sourceType</span>: <span class="string">&#x27;module&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="string">&#x27;vue&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;@typescript-eslint&#x27;</span>,</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">rules</span>: &#123;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>安装<code>yarn add eslint-define-config -D </code></p>
+<p>修改：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// eslint-define-config可以帮助我们做语法提示</span></span><br><span class="line"><span class="keyword">import</span> defineConfig <span class="keyword">from</span> <span class="string">&quot;eslint-define-config&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">env</span>: &#123;</span><br><span class="line">    <span class="attr">browser</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">es2021</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">node</span>: <span class="literal">true</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">extends</span>: [<span class="string">&quot;plugin:vue/essential&quot;</span>, <span class="string">&quot;airbnb-base&quot;</span>],</span><br><span class="line">  <span class="attr">parserOptions</span>: &#123;</span><br><span class="line">    <span class="attr">ecmaVersion</span>: <span class="string">&quot;latest&quot;</span>,</span><br><span class="line">    <span class="attr">parser</span>: <span class="string">&quot;@typescript-eslint/parser&quot;</span>,</span><br><span class="line">    <span class="attr">sourceType</span>: <span class="string">&quot;module&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="string">&quot;vue&quot;</span>, <span class="string">&quot;@typescript-eslint&quot;</span>],</span><br><span class="line">  <span class="attr">rules</span>: &#123;&#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<p>新增 ESLint 規則，避免 Vite2 环境下错误提示和额外的一些配置：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">rules</span>: &#123;</span><br><span class="line">    <span class="comment">// 单引号</span></span><br><span class="line">    <span class="attr">quotes</span>: [<span class="string">&#x27;error&#x27;</span>, <span class="string">&#x27;single&#x27;</span>],</span><br><span class="line">    <span class="comment">// 行末分号</span></span><br><span class="line">    <span class="attr">semi</span>: [<span class="string">&#x27;error&#x27;</span>, <span class="string">&#x27;always&#x27;</span>],</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 配置规则避免 Vite2 环境下错误</span></span><br><span class="line">    <span class="string">&#x27;import/no-unresolved&#x27;</span>: <span class="string">&#x27;off&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;import/no-extraneous-dependencies&#x27;</span>: <span class="string">&#x27;off&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;import/extensions&#x27;</span>: <span class="string">&#x27;off&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;global-require&#x27;</span>: <span class="string">&#x27;off&#x27;</span>,</span><br><span class="line">    <span class="comment">// &#x27;vue/script-setup-uses-vars&#x27;: &#x27;off&#x27; // 如果使用 script-setup 可开启</span></span><br><span class="line">    <span class="comment">// 关掉其他一些规则</span></span><br><span class="line">    <span class="string">&#x27;no-plusplus&#x27;</span>: <span class="string">&#x27;off&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;no-undef&#x27;</span>: <span class="string">&#x27;off&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;vue/multi-word-component-names&#x27;</span>: <span class="string">&#x27;off&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<p>创建 <code>.eslintignore </code>来配置<code>eslint</code>需要忽略哪些文件或者文件夹</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node_modules</span><br><span class="line">dist</span><br><span class="line">preview</span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<h3 id="Prettier"><a href="#Prettier" class="headerlink" title="Prettier"></a>Prettier</h3><ul>
+<li>安装</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add prettier -D</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置<blockquote>
+<p>项目根目录创建 .prettierrc.js</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">printWidth</span>: <span class="number">80</span>, <span class="comment">//一行的字符数，如果超过会进行换行，默认为80</span></span><br><span class="line">  <span class="attr">tabWidth</span>: <span class="number">2</span>, <span class="comment">// 一个 tab 代表几个空格数，默认为 2 个</span></span><br><span class="line">  <span class="attr">useTabs</span>: <span class="literal">false</span>, <span class="comment">//是否使用 tab 进行缩进，默认为false，表示用空格进行缩减</span></span><br><span class="line">  <span class="attr">singleQuote</span>: <span class="literal">true</span>, <span class="comment">// 字符串是否使用单引号，默认为 false，使用双引号</span></span><br><span class="line">  <span class="attr">semi</span>: <span class="literal">true</span>, <span class="comment">// 行尾是否使用分号，默认为true</span></span><br><span class="line">  <span class="attr">trailingComma</span>: <span class="string">&#x27;none&#x27;</span>, <span class="comment">// 是否使用尾逗号</span></span><br><span class="line">  <span class="attr">bracketSpacing</span>: <span class="literal">true</span> <span class="comment">// 对象大括号直接是否有空格，默认为 true，效果：&#123; a: 1 &#125;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://prettier.io/docs/en/options.html">配置项</a></p>
+</blockquote>
+<br/>
+
+<p>创建 <code>.prettierignore</code>来配置<code>prettire</code>忽略文件或者文件夹</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node_modules</span><br><span class="line">dist</span><br><span class="line">preview</span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<h3 id="集成Prettier到ESLint工具中"><a href="#集成Prettier到ESLint工具中" class="headerlink" title="集成Prettier到ESLint工具中"></a>集成Prettier到ESLint工具中</h3><ul>
+<li>安装</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add eslint-config-prettier eslint-plugin-prettier -D</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>eslint-config-prettier用来覆盖 ESLint 本身的规则配置，而eslint-plugin-prettier则是用于让 Prettier 来接管eslint –fix即修复代码的能力</p>
+</blockquote>
+<ul>
+<li>配置</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .eslintrc.js</span></span><br><span class="line"></span><br><span class="line"><span class="attr">parser</span>: <span class="string">&#x27;vue-eslint-parser&#x27;</span> <span class="comment">/* 解析.vue文件,需要制定解析vue文件解析器,否则报错*/</span>,</span><br><span class="line"><span class="attr">extends</span>: [</span><br><span class="line">  <span class="comment">// 继承ts规则，extends 字段即可自动开启插件中的推荐规则</span></span><br><span class="line">  <span class="string">&#x27;plugin:@typescript-eslint/recommended&#x27;</span>, </span><br><span class="line">  <span class="string">&#x27;prettier&#x27;</span>, <span class="comment">// 接入 prettier 的规则</span></span><br><span class="line">  <span class="string">&#x27;plugin:prettier/recommended&#x27;</span>, <span class="comment">// eslint-config-prettier 的缩写</span></span><br><span class="line">],</span><br><span class="line"><span class="attr">rules</span>: &#123;</span><br><span class="line">  <span class="comment">// 开启 prettier 自动修复的功能</span></span><br><span class="line">  <span class="string">&#x27;prettier/prettier&#x27;</span>: <span class="string">&#x27;error&#x27;</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>解决vue3 <code>defineProps&#39; is not defined</code>问题</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .eslintrc.js</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">globals</span>: &#123;</span><br><span class="line">    <span class="attr">defineProps</span>: <span class="string">&#x27;readonly&#x27;</span>,</span><br><span class="line">    <span class="attr">defineEmits</span>: <span class="string">&#x27;readonly&#x27;</span>,</span><br><span class="line">    <span class="attr">defineExpose</span>: <span class="string">&#x27;readonly&#x27;</span>,</span><br><span class="line">    <span class="attr">withDefaults</span>: <span class="string">&#x27;readonly&#x27;</span></span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置相关脚本</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//package.json</span></span><br><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;lint:script&quot;</span><span class="punctuation">:</span> <span class="string">&quot;eslint --ext .js,.jsx,.ts,.tsx,.vue --fix ./&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>安装插件<blockquote>
+<p>在VSCode中安装<code>ESLint</code>和<code>Prettier</code>这两个插件，并且在设置区中开启<code>Format On Save</code>，保存自动格式化。</p>
+</blockquote>
+</li>
+</ul>
+<br/>
+
+<h3 id="Stylelint"><a href="#Stylelint" class="headerlink" title="Stylelint"></a>Stylelint</h3><ul>
+<li>安装</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add stylelint stylelint-prettier stylelint-config-prettier stylelint-config-recess-order stylelint-config-standard stylelint-config-standard-scss -D</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .stylelintrc.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">// 注册 stylelint 的 prettier 插件</span></span><br><span class="line">  <span class="attr">plugins</span>: [<span class="string">&#x27;stylelint-scss&#x27;</span>, <span class="string">&#x27;stylelint-prettier&#x27;</span>],</span><br><span class="line">  <span class="comment">// 继承一系列规则集合</span></span><br><span class="line">  <span class="attr">extends</span>: [</span><br><span class="line">    <span class="comment">// standard 规则集合</span></span><br><span class="line">    <span class="string">&#x27;stylelint-config-standard&#x27;</span>,</span><br><span class="line">    <span class="comment">// standard 规则集合的 scss 版本</span></span><br><span class="line">    <span class="string">&#x27;stylelint-config-standard-scss&#x27;</span>,</span><br><span class="line">    <span class="comment">// 样式属性顺序规则</span></span><br><span class="line">    <span class="string">&#x27;stylelint-config-recess-order&#x27;</span>,</span><br><span class="line">    <span class="comment">// 接入 Prettier 规则</span></span><br><span class="line">    <span class="string">&#x27;stylelint-config-prettier&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;stylelint-prettier/recommended&#x27;</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 配置 rules</span></span><br><span class="line">  <span class="attr">rules</span>: &#123;</span><br><span class="line">    <span class="comment">// 开启 Prettier 自动格式化功能</span></span><br><span class="line">    <span class="string">&#x27;prettier/prettier&#x27;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">&#x27;at-rule-no-unknown&#x27;</span>: <span class="literal">null</span>,</span><br><span class="line">    <span class="string">&#x27;scss/at-rule-no-unknown&#x27;</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置脚本</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json</span></span><br><span class="line"> <span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">   <span class="attr">&quot;lint:style&quot;</span><span class="punctuation">:</span> <span class="string">&quot;stylelint --fix \&quot;src/**/*.&#123;css,scss&#125;\&quot;&quot;</span></span><br><span class="line"> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<h2 id="其他集成"><a href="#其他集成" class="headerlink" title="其他集成"></a>其他集成</h2><h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3><ul>
+<li>安装</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add vue-router@4</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>新建路由文件src&#x2F;router&#x2F;index.ts</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createRouter, createWebHashHistory, <span class="title class_">RouteRecordRaw</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;vue-router&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">routes</span>: <span class="title class_">Array</span>&lt;<span class="title class_">RouteRecordRaw</span>&gt; = [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Home&#x27;</span>,</span><br><span class="line">    <span class="attr">component</span>: <span class="function">() =&gt;</span> <span class="title function_">import</span>(<span class="string">&#x27;@/views/Home.vue&#x27;</span>),</span><br><span class="line">    <span class="attr">meta</span>: &#123; <span class="attr">requiresAuth</span>: <span class="literal">true</span> &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = <span class="title function_">createRouter</span>(&#123;</span><br><span class="line">  <span class="attr">history</span>: <span class="title function_">createWebHashHistory</span>(),</span><br><span class="line">  routes,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>添加ts类型支持自定义meta提示</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;vue-router&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">declare</span> <span class="variable language_">module</span> <span class="string">&#x27;vue-router&#x27;</span> &#123;</span><br><span class="line">  <span class="keyword">interface</span> <span class="title class_">RouteMeta</span> &#123;</span><br><span class="line">    <span class="comment">// 是可选的</span></span><br><span class="line">    isAdmin?: <span class="built_in">boolean</span>;</span><br><span class="line">    <span class="comment">// 每个路由都必须声明</span></span><br><span class="line">    <span class="attr">requiresAuth</span>: <span class="built_in">boolean</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>官网：<a target="_blank" rel="noopener" href="https://router.vuejs.org/zh/introduction.html">Vue Router</a></p>
+</blockquote>
+<br/>
+
+<h3 id="Pinia-状态管理"><a href="#Pinia-状态管理" class="headerlink" title="Pinia 状态管理"></a>Pinia 状态管理</h3><ul>
+<li>安装</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yarn add pinia</span><br><span class="line"><span class="comment"># 或者使用 npm</span></span><br><span class="line">npm install pinia</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置插件</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//main.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; createPinia &#125; <span class="keyword">from</span> <span class="string">&#x27;pinia&#x27;</span></span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(<span class="title function_">createPinia</span>())</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>分模块建立独立文件</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// user.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; defineStore &#125; <span class="keyword">from</span> <span class="string">&#x27;pinia&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> useUserStore = <span class="title function_">defineStore</span>(<span class="string">&#x27;user&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">state</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123; <span class="attr">count</span>: <span class="number">0</span> &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 也可以定义为</span></span><br><span class="line">  <span class="comment">// state: () =&gt; (&#123; count: 0 &#125;)</span></span><br><span class="line">  <span class="attr">actions</span>: &#123;</span><br><span class="line">    <span class="title function_">increment</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">count</span>++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123; useUserStore &#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用<blockquote>
+<p><a target="_blank" rel="noopener" href="https://pinia.web3doc.top/introduction.html">Pinia 中文文档</a></p>
+</blockquote>
+</li>
+</ul>
+<br/>
+
+<h3 id="Animate-css"><a href="#Animate-css" class="headerlink" title="Animate.css"></a>Animate.css</h3><ul>
+<li>安装</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add animate.css</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>引入</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.ts</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;animate.css&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">transition</span></span></span><br><span class="line"><span class="tag">      <span class="attr">name</span>=<span class="string">&quot;animate&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">enter-active-class</span>=<span class="string">&quot;animate__zoomIn&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">leave-active-class</span>=<span class="string">&quot;animate__zoomOut&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">class</span>=<span class="string">&quot;animate__animated&quot;</span></span></span><br><span class="line"><span class="tag">      &gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">transition</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<h3 id="时间日期格式话工具moment-js"><a href="#时间日期格式话工具moment-js" class="headerlink" title="时间日期格式话工具moment.js"></a>时间日期格式话工具moment.js</h3><blockquote>
+<p>见其他短文</p>
+</blockquote>
+<h3 id="Axios-VueRequest"><a href="#Axios-VueRequest" class="headerlink" title="Axios + VueRequest"></a>Axios + VueRequest</h3><blockquote>
+<p>见其他短文</p>
+</blockquote>
+<h3 id="UI库-Element-Plus"><a href="#UI库-Element-Plus" class="headerlink" title="UI库 Element Plus"></a>UI库 Element Plus</h3><blockquote>
+<p>官网：<a target="_blank" rel="noopener" href="https://element-plus.org/zh-CN/guide/installation.html">Element Plus</a></p>
+</blockquote>
+<br/>
+
+<blockquote>
+<p>参考来源：</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/YzI6lGmzDHUtqDEf1g5RBg">详解从零搭建企业级 vue3 + vite2+ ts4 框架全过程</a> </p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/3es6ryoTHE2a5GwWRFuWoQ">Vite2 + Vue3 + TypeScript + Pinia 搭建一套企业级的开发脚手架</a> </p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7021464780242321439">vue3中加入eslint和prettier</a> </p>
+<p><a target="_blank" rel="noopener" href="https://chupai.github.io/posts/2107/vite2/">Vite2 + Vue 3 + TypeScript + WindiCSS</a></p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Zon.</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://zon-blogs.github.io/2022/05/23/Vite-Vue3-TypeScript-Pinia-WindiCSS-%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA%E7%9A%84%E8%BF%87%E7%A8%8B/">https://zon-blogs.github.io/2022/05/23/Vite-Vue3-TypeScript-Pinia-WindiCSS-%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA%E7%9A%84%E8%BF%87%E7%A8%8B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://zon-blogs.github.io" target="_blank">Zon.Zhou</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Vue3/">Vue3</a></div><div class="post_share"><div class="social-share" data-image="https://v3.cn.vuejs.org/logo.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2022/05/23/Vue3%E4%B8%AD%E9%9B%86%E6%88%90VueRequest%E7%9A%84%E4%BD%BF%E7%94%A8/"><img class="prev-cover" src="https://v3.cn.vuejs.org/logo.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Vue3中集成VueRequest的使用</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/05/19/PropType%E7%B1%BB%E5%9E%8B%E9%AA%8C%E8%AF%81/" title="PropType类型验证"><img class="cover" src="https://v3.cn.vuejs.org/logo.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-19</div><div class="title">PropType类型验证</div></div></a></div><div><a href="/2022/05/23/Vue3%E4%B8%AD%E9%9B%86%E6%88%90VueRequest%E7%9A%84%E4%BD%BF%E7%94%A8/" title="Vue3中集成VueRequest的使用"><img class="cover" src="https://v3.cn.vuejs.org/logo.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-23</div><div class="title">Vue3中集成VueRequest的使用</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Zon.</div><div class="author-info__description">花开蝶自来</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/IsolateActors"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/IsolateActors" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/228657348@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到Zon.空间，转载请注明出处！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">项目搭建的过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">1.1.</span> <span class="toc-text">项目初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E5%92%8C%E9%A2%84%E8%A7%88%E7%8E%AF%E5%A2%83"><span class="toc-number">1.2.</span> <span class="toc-text">构建生产环境和预览环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%8A%A8%E5%AF%BC%E5%85%A5Vue-Api"><span class="toc-number">1.3.</span> <span class="toc-text">添加自动导入Vue Api</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E5%85%A5%E7%8E%B0%E4%BB%A3CSS%E5%B7%A5%E7%A8%8B%E5%8C%96"><span class="toc-number">2.</span> <span class="toc-text">接入现代CSS工程化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E6%88%90sass"><span class="toc-number">2.1.</span> <span class="toc-text">集成sass</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E6%88%90-WindiCSS"><span class="toc-number">2.2.</span> <span class="toc-text">集成 WindiCSS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%A6%E6%9D%9F%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC"><span class="toc-number">3.</span> <span class="toc-text">约束代码风格</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Eslint"><span class="toc-number">3.1.</span> <span class="toc-text">Eslint</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Prettier"><span class="toc-number">3.2.</span> <span class="toc-text">Prettier</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E6%88%90Prettier%E5%88%B0ESLint%E5%B7%A5%E5%85%B7%E4%B8%AD"><span class="toc-number">3.3.</span> <span class="toc-text">集成Prettier到ESLint工具中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Stylelint"><span class="toc-number">3.4.</span> <span class="toc-text">Stylelint</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E9%9B%86%E6%88%90"><span class="toc-number">4.</span> <span class="toc-text">其他集成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1"><span class="toc-number">4.1.</span> <span class="toc-text">路由</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pinia-%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86"><span class="toc-number">4.2.</span> <span class="toc-text">Pinia 状态管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Animate-css"><span class="toc-number">4.3.</span> <span class="toc-text">Animate.css</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E8%AF%9D%E5%B7%A5%E5%85%B7moment-js"><span class="toc-number">4.4.</span> <span class="toc-text">时间日期格式话工具moment.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Axios-VueRequest"><span class="toc-number">4.5.</span> <span class="toc-text">Axios + VueRequest</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UI%E5%BA%93-Element-Plus"><span class="toc-number">4.6.</span> <span class="toc-text">UI库 Element Plus</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/05/23/Vite-Vue3-TypeScript-Pinia-WindiCSS-%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA%E7%9A%84%E8%BF%87%E7%A8%8B/" title="Vite + Vue3 + TypeScript + Pinia + WindiCSS 项目搭建的过程"><img src="https://v3.cn.vuejs.org/logo.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vite + Vue3 + TypeScript + Pinia + WindiCSS 项目搭建的过程"/></a><div class="content"><a class="title" href="/2022/05/23/Vite-Vue3-TypeScript-Pinia-WindiCSS-%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA%E7%9A%84%E8%BF%87%E7%A8%8B/" title="Vite + Vue3 + TypeScript + Pinia + WindiCSS 项目搭建的过程">Vite + Vue3 + TypeScript + Pinia + WindiCSS 项目搭建的过程</a><time datetime="2022-05-23T01:48:05.000Z" title="发表于 2022-05-23 09:48:05">2022-05-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/23/Vue3%E4%B8%AD%E9%9B%86%E6%88%90VueRequest%E7%9A%84%E4%BD%BF%E7%94%A8/" title="Vue3中集成VueRequest的使用"><img src="https://v3.cn.vuejs.org/logo.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue3中集成VueRequest的使用"/></a><div class="content"><a class="title" href="/2022/05/23/Vue3%E4%B8%AD%E9%9B%86%E6%88%90VueRequest%E7%9A%84%E4%BD%BF%E7%94%A8/" title="Vue3中集成VueRequest的使用">Vue3中集成VueRequest的使用</a><time datetime="2022-05-23T01:30:33.000Z" title="发表于 2022-05-23 09:30:33">2022-05-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/22/%E5%AD%97%E7%AC%A6%E4%B8%B2false%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%B8%83%E5%B0%94%E5%80%BCfalse%E9%97%AE%E9%A2%98/" title="字符串false转换为布尔值false问题"><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic3.zhimg.com%2Fv2-1055a6a0468c9f9ddb129682e646ba6f_1200x500.jpg&amp;refer=http%3A%2F%2Fpic3.zhimg.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=auto?sec=1655775452&amp;t=602aa5913a04da09931c010dc1e907c4" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="字符串false转换为布尔值false问题"/></a><div class="content"><a class="title" href="/2022/05/22/%E5%AD%97%E7%AC%A6%E4%B8%B2false%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%B8%83%E5%B0%94%E5%80%BCfalse%E9%97%AE%E9%A2%98/" title="字符串false转换为布尔值false问题">字符串false转换为布尔值false问题</a><time datetime="2022-05-22T01:33:29.000Z" title="发表于 2022-05-22 09:33:29">2022-05-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/21/Vite-Vue3%E4%B8%AD%E4%BD%BF%E7%94%A8moment-js%E4%B8%AD%E6%96%87%E5%9B%BD%E9%99%85%E5%8C%96%E6%97%A0%E6%95%88/" title="Vite+Vue3中使用moment.js中文国际化无效"><img src="https://cn.vitejs.dev/logo.svg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vite+Vue3中使用moment.js中文国际化无效"/></a><div class="content"><a class="title" href="/2022/05/21/Vite-Vue3%E4%B8%AD%E4%BD%BF%E7%94%A8moment-js%E4%B8%AD%E6%96%87%E5%9B%BD%E9%99%85%E5%8C%96%E6%97%A0%E6%95%88/" title="Vite+Vue3中使用moment.js中文国际化无效">Vite+Vue3中使用moment.js中文国际化无效</a><time datetime="2022-05-21T07:10:51.000Z" title="发表于 2022-05-21 15:10:51">2022-05-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/21/Vite%E6%96%87%E4%BB%B6%E5%BC%95%E5%85%A5/" title="Vite文件引入"><img src="https://cn.vitejs.dev/logo.svg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vite文件引入"/></a><div class="content"><a class="title" href="/2022/05/21/Vite%E6%96%87%E4%BB%B6%E5%BC%95%E5%85%A5/" title="Vite文件引入">Vite文件引入</a><time datetime="2022-05-21T05:32:50.000Z" title="发表于 2022-05-21 13:32:50">2022-05-21</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.pixabay.com/photo/2020/05/21/21/28/ai-5202865_1280.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Zon.</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎来到我的博客！</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="false" data-text="I,LOVE,YOU" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
